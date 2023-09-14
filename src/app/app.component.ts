@@ -1,11 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ObservableService } from './service/observable.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor(private service:ObservableService){}
+ ngOnInit() {
+  this.service.call().subscribe((res)=>{
+    console.log(res)
+  })
+
+  
+ }
  passwordlength:number=12
  small:boolean=false
  capital:boolean=false
